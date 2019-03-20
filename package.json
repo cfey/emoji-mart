@@ -1,12 +1,12 @@
 {
-  "name": "emoji-mart",
-  "version": "2.10.0",
-  "description": "Customizable Slack-like emoji picker for React",
+  "name": "@cfey/emoji-mart",
+  "version": "2.10.1",
+  "description": "Customizable Slack-like emoji picker for React with virtualized list",
   "main": "dist/index.js",
   "module": "dist-es/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:missive/emoji-mart.git"
+    "url": "git+ssh://git@github.com/missive/emoji-mart.git"
   },
   "keywords": [
     "react",
@@ -16,9 +16,9 @@
   "author": "Etienne Lemay",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/missive/emoji-mart/issues"
+    "url": "https://github.com/cfey/emoji-mart/issues"
   },
-  "homepage": "https://github.com/missive/emoji-mart",
+  "homepage": "https://github.com/cfey/emoji-mart",
   "dependencies": {
     "prop-types": "^15.6.0",
     "react-virtualized": "^9.21.0"
@@ -84,5 +84,8 @@
       "path": "dist-es/index.js",
       "limit": "80 KB"
     }
-  ]
+  ],
+  "directories": {
+    "doc": "docs"
+  }
 }

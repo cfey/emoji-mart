@@ -6,6 +6,11 @@
   <br>Brought to you by the <a title="Team email, team chat, team tasks, one app" href="https://missiveapp.com">Missive</a> team
 </div>
 
+## Note
+
+I created this fork because the emoji list was not virtualized and my application had big performance drops.
+This fork is far from perfect but feel free to use it :)
+
 ## Installation
 
 `npm install --save emoji-mart`
