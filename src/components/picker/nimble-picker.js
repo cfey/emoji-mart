@@ -78,6 +78,10 @@ export default class NimblePicker extends React.PureComponent {
     }
 
     this.heightMap = props.heightMap || heightMap;
+    this.totalHeight = Object.values(this.heightMap).reduce((prev, curr) => {
+      return prev + curr;
+    }, 0);
+
     this.data = props.data;
     this.i18n = deepMerge(I18N, props.i18n);
     this.icons = deepMerge(icons, props.icons);
@@ -194,6 +198,11 @@ export default class NimblePicker extends React.PureComponent {
     this.rowRender = this.rowRender.bind(this);
     this.setHeight = this.setHeight.bind(this);
     this.setListRef = this.setListRef.bind(this);
+    this.callForceUpdate = this.callForceUpdate.bind(this);
+
+    if (props.registerForceUpdate) {
+      props.registerForceUpdate(this.callForceUpdate);
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -209,7 +218,6 @@ export default class NimblePicker extends React.PureComponent {
       this.testStickyPosition();
       this.firstRenderTimeout = setTimeout(() => {
         this.setState({firstRender: false});
-        this.list.forceUpdateGrid();
       }, 60);
     }
   }
@@ -236,6 +244,11 @@ export default class NimblePicker extends React.PureComponent {
     );
 
     this.hasStickyPosition = !!stickyTestElement.style.position.length;
+  }
+
+  callForceUpdate() {
+    this.forceUpdate();
+    this.list.forceUpdateGrid();
   }
 
   handleEmojiOver(emoji) {
@@ -374,8 +387,7 @@ export default class NimblePicker extends React.PureComponent {
         component.updateDisplay(display);
       }
     }
-    this.forceUpdate();
-    this.list.forceUpdateGrid();
+    this.callForceUpdate();
     this.scroll.scrollTop = 0;
     this.handleScroll();
   }
@@ -598,9 +610,6 @@ export default class NimblePicker extends React.PureComponent {
 
     var categories = this.getCategories();
 
-    var height = Object.values(this.heightMap).reduce((prev, curr) => {
-      return prev + curr;
-    }, 0);
 
     return (
         <section
@@ -640,7 +649,7 @@ export default class NimblePicker extends React.PureComponent {
           >
             <List
                 ref={this.setListRef}
-                height={height}
+                height={this.totalHeight}
                 rowHeight={this.setHeight}
                 deferredMeasurementCache={this._cache}
                 rowCount={categories.length}
