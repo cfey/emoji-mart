@@ -209,6 +209,7 @@ export default class NimblePicker extends React.PureComponent {
       this.testStickyPosition();
       this.firstRenderTimeout = setTimeout(() => {
         this.setState({firstRender: false});
+        this.list.forceUpdateGrid();
       }, 60);
     }
   }

@@ -1,6 +1,6 @@
 {
   "name": "@cfey/emoji-mart",
-  "version": "2.10.2",
+  "version": "2.10.3",
   "description": "Customizable Slack-like emoji picker for React with virtualized list",
   "main": "dist/index.js",
   "module": "dist-es/index.js",
