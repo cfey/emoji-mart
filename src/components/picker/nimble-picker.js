@@ -581,7 +581,8 @@ export default class NimblePicker extends React.PureComponent {
     let amountOfEmojis = category.emojis ? category.emojis.length : 0
 
     if (category.id === 'recent') {
-      console.log(this.props)
+      const recentEmojis = frequently.get(perLine)
+      amountOfEmojis = recentEmojis.length
     }
 
     const amountOfRows = Math.ceil((amountOfEmojis / perLine))
